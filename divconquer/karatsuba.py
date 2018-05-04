@@ -15,7 +15,7 @@ def karatsuba(x, y):
         ac = karatsuba(a, c)
         bd = karatsuba(b, d)
         ad_plus_bc = karatsuba(a + b, c + d) - ac - bd
-        return ac * (10 ** (2 * nby2)) + (ad_plus_bc * (10 ** nby2)) + bd
+        return int(str(ac) + '0'*(2*nby2)) + int(str(ad_plus_bc) + '0'*nby2) + bd
 
 
 i = 3141592653589793238462643383279502884197169399375105820974944592
