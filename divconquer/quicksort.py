@@ -1,18 +1,6 @@
 from random import randint
 
-
-def partition(A, p, l, r):
-    i = r
-    A[l], A[p] = A[p], A[l]
-    for j in range(l + 1, r + 1):
-        if A[j] < A[l] and i != r:
-            A[j], A[i] = A[i], A[j]
-            i += 1
-        elif A[j] > A[l] and i == r:
-            i = j
-    pivot = i - 1 if A[i] > A[l] else i
-    A[pivot], A[l] = A[l], A[pivot]
-    return A, pivot
+from divconquer.partition import partition
 
 
 def quicksort(A, l, r):
