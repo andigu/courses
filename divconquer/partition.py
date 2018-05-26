@@ -1,5 +1,5 @@
 def partition(array, p, l, r, inplace=True):
-    i = r
+    i = r  # index of left most element larger than pivot
     if not inplace:
         array = list(array)
     array[l], array[p] = array[p], array[l]
@@ -12,4 +12,3 @@ def partition(array, p, l, r, inplace=True):
     pivot = i - 1 if array[i] > array[l] else i
     array[pivot], array[l] = array[l], array[pivot]
     return array, pivot
-
