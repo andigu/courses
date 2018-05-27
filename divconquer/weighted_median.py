@@ -21,11 +21,16 @@ def right_weighted_median(array, l, r, W):
 
 
 def weighted_median(array):
+    """
+    Weighted median refers to element in an array where the sum of all weights of all elements less than it is less
+    than half the total weight, and the sum of all weights of all elements larger than it is also less than half
+    the total weight. There are at most two weighted medians in an array.
+    """
     n = len(array)
     W = sum(x[1] for x in array)
     right_med = right_weighted_median(array, 0, n - 1, W)
     array, ind = partition(array, array.index(right_med), 0, n - 1, False)
-    if sum(x[1] for x in array[ind:]) <= W/2:
+    if sum(x[1] for x in array[ind:]) <= W / 2:
         return max(array[:ind]), right_med
     return (), right_med
 
@@ -41,10 +46,10 @@ for trial in range(10000):
 
     answers = []
     c_weight = 0
-    for i in range(size-1):
+    for i in range(size - 1):
         c_weight += std[i][1]
-        if c_weight <= half_weight and half_weight * 2 - c_weight - std[i+1][1] <= half_weight:
-            answers.append(std[i+1])
+        if c_weight <= half_weight and half_weight * 2 - c_weight - std[i + 1][1] <= half_weight:
+            answers.append(std[i + 1])
     if len(answers) == 1:
         answers.insert(0, ())
     correct = correct and answers[0] == med1 and answers[1] == med2
